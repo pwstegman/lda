@@ -6,7 +6,6 @@ var current_classification = 'blue';
 
 canvas.addEventListener('click', canvasClick, false);
 document.getElementById('toggle_btn').addEventListener('click', toggleColor, false);
-document.getElementById('separate_btn').addEventListener('click', computeLDA, false);
 
 updateToggleText();
 
@@ -46,6 +45,8 @@ function drawCanvas(){
     context.fillStyle = color;
     context.fill();
   }
+  // Compute and draw the line of separation
+  computeLDA();
 }
 
 function cov(a){
@@ -79,7 +80,6 @@ function computeLDA(){
   }
   // Make sure we have at least 2 points in each set
   if(set1.length < 2 || set2.length < 2){
-    notify('Please place at least 2 of each type of point');
     return;
   }
   // Compute LDA
@@ -108,13 +108,4 @@ function drawSeparationLine(theta, b){
   context.moveTo(x1,y1);
   context.lineTo(x2,y2);
   context.stroke();
-}
-
-var notifyTimeout;
-function notify(message){
-  document.getElementById('notification').innerHTML = message;
-  clearTimeout(notifyTimeout);
-  notifyTimeout = setTimeout(function(){
-    document.getElementById('notification').innerHTML = '';
-  }, 5000);
 }

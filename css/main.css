@@ -35,8 +35,3 @@ canvas {
   margin-right: auto;
   white-space: nowrap;
 }
-
-#notification {
-  display: inline-block;
-  color: blue;
-}
