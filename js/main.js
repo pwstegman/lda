@@ -5,9 +5,10 @@ var classifications = [];
 var current_classification = 'blue';
 
 canvas.addEventListener('click', canvasClick, false);
-document.getElementById('blue_btn').addEventListener('click', function(){setClass('blue')}, false);
-document.getElementById('red_btn').addEventListener('click', function(){setClass('red')}, false);
+document.getElementById('toggle_btn').addEventListener('click', toggleColor, false);
 document.getElementById('separate_btn').addEventListener('click', computeLDA, false);
+
+updateToggleText();
 
 function canvasClick(event){
   var x = event.pageX - canvas.offsetLeft;
@@ -18,8 +19,17 @@ function canvasClick(event){
   drawCanvas();
 }
 
-function setClass(color){
-  current_classification = color;
+function toggleColor(){
+  if(current_classification == 'blue'){
+    current_classification = 'red';
+  }else{
+    current_classification = 'blue';
+  }
+  updateToggleText();
+}
+
+function updateToggleText(){
+  document.getElementById('toggle_status').innerHTML = '(Current: ' + current_classification + ')';
 }
 
 function drawCanvas(){
@@ -67,6 +77,11 @@ function computeLDA(){
       set2.push(points[i]);
     }
   }
+  // Make sure we have at least 2 points in each set
+  if(set1.length < 2 || set2.length < 2){
+    notify('Please place at least 2 of each type of point');
+    return;
+  }
   // Compute LDA
   var c1 = math.matrix(set1);
   var c2 = math.matrix(set2);
@@ -93,4 +108,13 @@ function drawSeparationLine(theta, b){
   context.moveTo(x1,y1);
   context.lineTo(x2,y2);
   context.stroke();
+}
+
+var notifyTimeout;
+function notify(message){
+  document.getElementById('notification').innerHTML = message;
+  clearTimeout(notifyTimeout);
+  notifyTimeout = setTimeout(function(){
+    document.getElementById('notification').innerHTML = '';
+  }, 5000);
 }

@@ -7,11 +7,21 @@
 </head>
 <body>
   <h1>LDA</h1>
-  <p>(I've no idea what I'm doing)</p>
+  <div class="notes">
+    I wasn't sure how linear discriminant analysis (LDA) was used in
+    data classification tasks or how it worked, so I wrote up this
+    simple script to begin exploring LDA.
+  </div>
+  <div class="notes">
+    Create clusters of red and blue points by clicking on the canvas. Then, click
+    'Linearly Separate Data' to draw the line which best separates the data using LDA.
+  </div>
+  <div class="toolbar">
+    <button id="toggle_btn">Toggle Color <span id="toggle_status"></span></button>
+    <button id="separate_btn">Linearly Separate Data</button>
+    <div id="notification"></div>
+  </div>
   <canvas id="canvas" width="640" height="480"></canvas>
-  <button id="blue_btn">Blue</button>
-  <button id="red_btn">Red</button>
-  <button id="separate_btn">Linearly Separate Data</button>
   <script src="js/main.js"></script>
 </body>
 </html>
