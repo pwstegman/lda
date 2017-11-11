@@ -1,26 +1,43 @@
-<html>
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>LDA</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
-  <script src="js/math.min.js"></script>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+
+	<link rel="stylesheet" href="css/main.css" />
+
+	<title>LDA</title>
 </head>
 <body>
-  <h1>LDA</h1>
-  <div class="notes">
-    I wasn't sure how linear discriminant analysis (LDA) was used in
-    data classification tasks or how it worked, so I wrote up this
-    simple script to begin exploring LDA.
-  </div>
-  <div class="notes">
-    Create clusters of red and blue points by clicking on the canvas. Once at least
-    2 points of each color have been placed, the line of separation as calculated with
-    LDA will be drawn and automatically updated.
-  </div>
-  <div class="toolbar">
-    <button id="toggle_btn">Toggle Color <span id="toggle_status"></span></button>
-  </div>
-  <canvas id="canvas" width="640" height="480"></canvas>
-  <script src="js/main.js"></script>
+	<canvas id="canvas"></canvas>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-3 col-md-4 col-sm-6 info">
+				<h1>LDA</h1>
+				<p>
+					<div><span class="badge badge-secondary">Click</span> to draw <span class="blue">blue</span> points</div>
+					<div><span class="badge badge-secondary">Shift+Click</span> to draw <span class="red">red</span> points</div>
+					<div><span class="badge badge-secondary">Space</span> to clear</div>
+				</p>
+				<p>
+					<a href="https://en.wikipedia.org/wiki/Linear_discriminant_analysis">Linear discriminant analysis</a> (LDA) assumes each
+					cluster of points is normally distributed and then draws a line which best separates these distributions. It can be
+					used to classify an unknown data point by testing which side of the line the unknown data point lies. LDA can also operate
+					on higher dimensional data, where it calculates a separating hyperplane.
+				</p>
+				<div class="buttons">
+					<button id="clearBtn" type="button" class="btn btn-secondary">Clear</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/math.min.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>

@@ -1,37 +1,34 @@
-html, body{
-  width: 100%;
-  height: 100%;
-  font-family: 'Open Sans', sans-serif;
+html, body {
+	margin: 0;
+	padding: 0;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-ms-user-select: none;
 }
 
-h1 {
-  width: 640px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 0.5em;
+#canvas {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: -10;
 }
 
-canvas {
-  display: block;
-  box-shadow:inset 0px 0px 0px 2px #000;
-  margin-left: auto;
-  margin-right: auto;
+.info {
+	margin: 1em;
+	padding: 1em 1em 1em 1.5em;
+	border-radius: 1em;
+	background-color: rgba(0, 0, 0, 0.15);
 }
 
-.notes {
-  width: 640px;
-  padding-bottom: 1em;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
+.btn {
+	cursor: pointer;
 }
 
-.toolbar {
-  padding-bottom: 1em;
-  width: 640px;
-  margin-left: auto;
-  margin-right: auto;
-  white-space: nowrap;
+.blue {
+	color: #005bff;
+}
+
+.red {
+	color: #df0000;
 }
